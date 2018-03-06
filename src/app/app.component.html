@@ -1,0 +1,68 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<input type="text" [(ngModel)]="firstname" name="firstname" placeholder="Firstname">
+<input type="text" [(ngModel)]="lastname" name="lastname" placeholder="Lastname">
+<input type="text" [(ngModel)]="email" name="email" placeholder="Email">
+<input type="text" [(ngModel)]="address" name="address" placeholder="Address">
+<input type="text" [(ngModel)]="mobile" name="mobile" placeholder="Mobile">
+<input type="text" [(ngModel)]="phonenumber" name="phonenumber" placeholder="Phone number">
+<input type="submit" value="Add a Post" (click)="addPost()">
+
+
+<ul *ngFor="let post of posts | async">
+  <li (click)= "getPost(post.id)">
+      
+      <br>
+      <table class="table">
+          <thead>
+            <tr>
+              
+            </tr>
+          </thead>
+          <tbody>
+            
+            <tr>
+              <th scope="row"> {{ post.data.firstname}} </th>
+              <td>{{post.data.lastname}}</td>
+              <td> {{post.data.email}}</td>
+              <td>{{post.data.address}}</td>
+              <td>{{post.data.mobile}}</td>
+              <td>{{post.data.phonenumber}}</td>
+              <td><button class="btn btn-xs btn-info" (click)= "deletePost(post.id)" >Delete</button>
+                <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal" (click)= "getPost(post.id)">Open Modal</button>
+
+                <!-- Modal -->
+                <div id="myModal" class="modal fade" role="dialog">
+                  <div class="modal-dialog">
+                
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Modal Header</h4>
+                      </div>
+                      <div class="modal-body">
+                          <input type="text" name="firstname" value="{{post.data.firstname}}">
+                          <input type="text"  name="lastname" value="{{post.data.lastname}}">
+                          <input type="text"  name="email" value=" {{post.data.email}}">
+                          <input type="text" name="address" value="{{post.data.address}}">
+                          <input type="text"  name="mobile" value="{{post.data.mobile}}">
+                          <input type="text" name="phonenumber" value="{{post.data.phonenumber}}">
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    
+    
+  </li>
+</ul>
+
+
+  
